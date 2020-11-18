@@ -96,7 +96,7 @@ knitr::include_graphics("imgs/G4.svg")
 ]
 ---
 ## Algorithms for G-quadruplexes (G4) predictions
-### DNA based methods
+### Expert system methods
 
 ```{r,echo=F}
 G4.table <- tibble(
@@ -166,7 +166,7 @@ knitr::include_graphics("imgs/G4-seq.png")
 
 ---
 ## Algorithms for G-quadruplexes (G4) predictions
-### G4-seq based algorithms
+### Machine learning based algorithms
 
 ```{r,echo=F}
 sub.G4.table <- 
@@ -216,7 +216,7 @@ knitr::include_graphics("imgs/BG4seq.png")
 
 ---
 
-## Sequence features enriched at active G4s
+## __Active G4s__ dataset
 .pull-left[
 
 #### Overlap between in vitro (G4-Seq) and in vivo (BG4-Seq) form active G4s.
@@ -235,28 +235,7 @@ knitr::include_graphics("imgs/mergepeaks.png")
 ]
 
 ---
-## Sequence features enriched at active G4s
-.pull-left[
 
-* Active G4s are enriched in __promoters__.
-* Current algorithms failed to predict non-negligible fraction of __active G4s (11%)__.
-* And more than 50% of their results are __false positives__.
-
-]
-
-.pull-right[
-
-```{r out.width = '42%',echo=F}
-knitr::include_graphics("imgs/Venn1.png")
-```
-
-]
-.center[
-```{r out.width = '85%',echo=F}
-knitr::include_graphics("imgs/average_prof_AME.png")
-```
-]
----
 
 
 ## G4 predictions with __DeepG4__
@@ -429,6 +408,20 @@ knitr::include_graphics("imgs/RFclusters.png")
 ]
 
 ---
+### Cell type specific transcription factor motif predictors of active G4s
+
+.center[
+```{r out.width = '80%',echo=F}
+knitr::include_graphics("imgs/Fig5_TFmotif_celltype.svg")
+```
+]
+
+__Random Forest classifier:__
+
+* One cell type vs all others cells types.
+* Use TFBS motifs as features.
+* Importance weighted by motif abundance in the positive set.
+---
 class: split-40-reverse
 ## __DeepG4__: SNP effect on active G4s
 
@@ -460,7 +453,7 @@ knitr::include_graphics("imgs/SNP2.png")
 ---
 class: inverse, center, middle
 
-### .right[.Large[__T__hanks !]]
+### .right[.Large[Thanks __!__]]
 
 <hr />
 
@@ -469,8 +462,48 @@ class: inverse, center, middle
 .large[CBI-Toulouse | Chromatin and DNA Repair | 22/11/2020]
 
 ---
+## Sequence features enriched at active G4s
+.pull-left[
+
+* Active G4s are enriched in __promoters__.
+* Current algorithms failed to predict non-negligible fraction of __active G4s (11%)__.
+* And more than 50% of their results are __false positives__.
+
+]
+
+.pull-right[
+
+```{r out.width = '42%',echo=F}
+knitr::include_graphics("imgs/Venn1.png")
+```
+
+]
+.center[
+```{r out.width = '85%',echo=F}
+knitr::include_graphics("imgs/average_prof_AME.png")
+```
+]
+---
 .center[
 ```{r out.width = '80%',echo=F}
 knitr::include_graphics("imgs/Motif_extraction.png")
 ```
 ]
+---
+## __AUC__
+
+```{r,echo=F,warning=F,message=F}
+library(formattable)
+fres <- read_tsv("recap_AUC_1.tsv") %>% 
+  gather(key = Input,value=AUC,-Tool) 
+fres <- fres %>% 
+  mutate(AUC = color_bar("lightgreen")(fres$AUC)) %>% 
+  spread(key = Tool,value = AUC) %>% 
+  mutate(Input = str_remove(Input,"_Ctrl_gkmSVM|_Ctrl"))
+fres %>% 
+  kable(escape=F) %>%
+  kable_paper("hover", full_width = F) %>% 
+  column_spec(1:ncol(fres), width = "3cm") %>%
+  scroll_box(height = "500px")
+
+```

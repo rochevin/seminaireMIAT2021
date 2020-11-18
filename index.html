@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>index.utf8</title>
+    <meta charset="utf-8" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/rutgers.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+class: inverse, center, middle
+background-image: url(imgs/logo.svg),url(imgs/cbi.png),url(imgs/logo_UT3_RVB.png),url(imgs/index.jpeg)
+background-position: 50% 0%,25% 100%,50% 100%,75% 100%
+background-size: 45%,15%,20%,10%
+
+
+
+## .center[.large[Deep__G4:__] A deep learning approach to predict active G-quadruplexes]
+
+### .center[SeqBim 2020]
+&lt;hr /&gt;
+
+.large[Vincent ROCHER, Matthieu Genais, Elissar Nassereddine and Raphaël Mourad]
+
+.large[CBI-Toulouse | Chromatin and DNA Repair | 22/11/2020]
+
+---
+
+## __DNA__: The secret of life 
+
+.pull-left[
+.large[
+### __B-DNA__ _(1953)_
+]
+&lt;img src="imgs/DNA.png" width="40%" /&gt;
+
+&gt; The B- DNA (double helix structure) is the most stable structure.
+
+
+]
+
+.pull-right[
+.large[
+### __Non B-DNA__ _(1954)_
+]
+&lt;img src="imgs/nonBDNA.png" width="90%" /&gt;
+
+]
+
+
+---
+
+## __G-Quadruplex (G4)__: A non B-DNA Structure
+.center[
+&lt;img src="imgs/41598_2017_14017_Fig1_HTML.webp" width="80%" /&gt;
+]
+.pull-right[.small[_Balasubramanian et al,Sci Rep, 2017_]]
+
+
+* .large[Fold into four-stranded structures.]
+* .large[Containing guanine tetrad.]
+* .large[Motif] `\(G\geq3N_xG\geq3N_yG\geq3N_zG\geq3\)`
+
+---
+## Biological function of G4's
+
+.center[
+&lt;img src="imgs/G4.svg" width="70%" /&gt;
+]
+.large[
+* Regulation of __gene expression__ and __chromatin architecture__.
+* __Telomere stability__.
+* Disrupting the replication fork progression causing __DSBs__.
+]
+---
+## Algorithms for G-quadruplexes (G4) predictions
+### DNA based methods
+
+&lt;table class="table table-striped" style="font-size: 16px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Method &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Implementation &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Year &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Link &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;quadparser&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #2B83BA !important;text-align: c;"&gt;Regex&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2005 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/dariober/" style="     "&gt;https://github.com/dariober/&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;gqrs_mapper&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2006 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="http://bioinformatics.ramapo.edu/QGRS" style="     "&gt;http://bioinformatics.ramapo.edu/QGRS&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4hunter&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2016 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/AnimaTardeb/G4Hunter" style="     "&gt;https://github.com/AnimaTardeb/G4Hunter&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;pqsfinder&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://bioconductor.org/packages/release/bioc/html/pqsfinder.html" style="     "&gt;https://bioconductor.org/packages/release/bioc/html/pqsfinder.html&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;qparse&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2019 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/B3rse/qparse" style="     "&gt;https://github.com/B3rse/qparse&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4CatchAll&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #2B83BA !important;text-align: c;"&gt;Regex&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2019 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/odoluca/G4Catchall" style="     "&gt;https://github.com/odoluca/G4Catchall&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+* __Regex: __ `([Gg]{3,})  (\w{1,8})  ([Gg]{3,}) (\w{1,8}) ([Gg]{3,}) (\w{1,8}) ([Gg]{3,})`
+* __Score based:__ Compute a score using a sliding windows over the whole genome by using __G richness__ and __G skewness__ (G4Hunter).
+
+---
+class: split-40
+
+### First G4 genome-wide mapping _in vitro_ (G4-seq) 2014 
+
+.column[
+
+* High-resolution sequencing–based method to detect G4s in the human genome in vitro.
+
+* The developed method called G4-seq combining features of the polymerase stop assay with Illumina next-generation sequencing.
+
+
+]
+.column[
+
+&lt;img src="imgs/G4-seq.png" width="60%" /&gt;
+
+]
+
+---
+## Algorithms for G-quadruplexes (G4) predictions
+### G4-seq based algorithms
+
+&lt;table class="table table-striped" style="font-size: 18px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Method &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Implementation &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Year &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Link &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;quadron&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FDAE61 !important;text-align: c;"&gt;Machine Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R xgboost&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2017 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/aleksahak/Quadronr" style="     "&gt;https://github.com/aleksahak/Quadronr&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4detector&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2019 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/OrensteinLab/G4detector" style="     "&gt;https://github.com/OrensteinLab/G4detector&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;penguinn&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2020 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;a href="https://github.com/ML-Bioinfo-CEITEC/penguinn" style="     "&gt;https://github.com/ML-Bioinfo-CEITEC/penguinn&lt;/a&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+* __Quadron:__ A machine learning model to predict the formation of G4s using 119  sequence-based features. I.e: the number of tetrads in the G4s , the occurrence of special kmer … 
+* __Penguinn, G4detector:__ Multiple layers CNN (Deep learning)
+
+---
+class: split-80
+
+### Mapping G4s in vivo with __BG4-seq__ (2018)
+
+
+.column[
+
+* ChIP-seq for the DNA secondary structures through the use of a G4-structure-specific single-chain antibody (BG4).
+* Refinements in chromatin immunoprecipitation.
+* Followed by high-throughput sequencing.
+
+&lt;img src="imgs/Av_prof.png" width="100%" /&gt;
+]
+.column[
+
+&lt;img src="imgs/BG4seq.png" width="70%" /&gt;
+
+]
+
+---
+
+## Sequence features enriched at active G4s
+.pull-left[
+
+#### Overlap between in vitro (G4-Seq) and in vivo (BG4-Seq) form active G4s.
+&lt;img src="imgs/vennBG4.svg" width="100%" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="imgs/mergepeaks.png" width="50%" /&gt;
+
+]
+
+---
+## Sequence features enriched at active G4s
+.pull-left[
+
+* Active G4s are enriched in __promoters__.
+* Current algorithms failed to predict non-negligible fraction of __active G4s (11%)__.
+* And more than 50% of their results are __false positives__.
+
+]
+
+.pull-right[
+
+&lt;img src="imgs/Venn1.png" width="42%" /&gt;
+
+]
+.center[
+&lt;img src="imgs/average_prof_AME.png" width="85%" /&gt;
+]
+---
+
+
+## G4 predictions with __DeepG4__
+
+#### __DeepG4__: a deep learning model to predict __active G4s__ (BG4-G4-seq peaks).
+
+.pull-left[
+#### What is deep learning ? 
+&lt;img src="imgs/whatisdeeplearning.jpg" width="80%" /&gt;
+
+
+]
+
+.pull-right[
+#### Some basic representation of a multi-layer deep learning model
+&lt;img src="imgs/deeplearning_img1.png" width="100%" /&gt;
+
+]
+---
+## G4 predictions with __DeepG4__
+
+#### Deep learning for DNA sequences.
+
+.pull-left[
+
+&lt;img src="imgs/06fig22.jpg" width="95%" /&gt;
+
+#### Convolutional model (CNN)
+
+]
+
+.pull-right[
+
+
+
+&lt;img src="imgs/kernel464_pwm_epoch0to20.svg" width="100%" /&gt;
+#### Weights can be represented as PWM and encode motifs as features for our model.
+
+]
+
+
+
+---
+## __DeepG4__ model architecture
+
+&lt;img src="imgs/CNN_model_improved.svg" width="100%" /&gt;
+
+1. __Conv1D__: Scan sequences using kernel (20bp).
+2. __Average pooling__: Reduce dimension size and aggregate kernel signal.
+3. __Global max pooling__: Output max activation signal for each kernel.
+4. __Dropout__: Regularization layer.
+5. __Dense layer__ `(100 units,linear)`: Combination of weighted kernel signal.
+6. __Dense layer__ `(1 unit, sigmoid)`: Output a probability.
+
+---
+class: split-40
+## __DeepG4__: Performances
+
+
+
+.column[
+
+#### Input
+
+__Control sequences:__ randomly selected genomic sequences that matched sizes, GC,
+and repeat contents similar to actives G4s (R package gkmSVM).
+
+* __HaCat G4:__ train/validation/test dataset.
+* __Independent experiment:__ HaCat, HEKnp, K562.
+
+
+]
+.column[
+
+#### Tools
+
+&lt;table class="table table-striped" style="font-size: 16px; width: auto !important; float: right; margin-left: 10px;"&gt;
+&lt;caption style="font-size: initial !important;"&gt;G4 detection algorithms&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Name &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Method &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Implementation &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;DeepG4&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R/Tensorflow&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;penguinn_retrained&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;penguinn&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4detector_retrained&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4detector&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #D7191C !important;text-align: c;"&gt;Deep Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python / Tensorflow&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;quadron_retrained&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FDAE61 !important;text-align: c;"&gt;Machine Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R xgboost&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;quadron_score&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FDAE61 !important;text-align: c;"&gt;Machine Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R xgboost&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4hunterRF&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #FDAE61 !important;text-align: c;"&gt;Machine Learning&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R ranger / python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4hunter&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;qparse&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;pqsfinder&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;R&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;gqrs_mapper&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #ABDDA4 !important;text-align: c;"&gt;Score based&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;quadparser&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #2B83BA !important;text-align: c;"&gt;Regex&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: white !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: black !important;text-align: c;"&gt;G4CatchAll&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #2B83BA !important;text-align: c;"&gt;Regex&lt;/span&gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; &lt;span style=" font-weight: bold;    color: black !important;text-align: c;"&gt;Python&lt;/span&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+
+## __DeepG4__: Performances
+
+&lt;img src="imgs/Fig3_DeepG4_prediction_validation_before.svg" width="100%" /&gt;
+
+---
+
+## __DeepG4__: Performances
+
+&lt;img src="imgs/Fig3_DeepG4_prediction_validation_after.svg" width="100%" /&gt;
+
+---
+
+## __DeepG4__: Feature extraction
+
+* __Motifs are extracted from kernels__.
+* 900 kernels associated into __163 clusters__ using matrix clustering (RSAT).
+* Represented into __163 root motifs__.
+
+.center[
+&lt;img src="imgs/cluster_motif.png" width="70%" /&gt;
+
+#### Multidimensional scaling (MDS) of DeepG4 clusters.
+]
+---
+class: split-40-reverse
+## __DeepG4__: Feature importance
+
+
+.column[
+
+* Known TFBS motifs (identified with TomTom) are good predictors.
+* De novo and G4-like motifs also found as good predictors.
+
+
+.pull-left[
+
+&lt;img src="imgs/enrichissement_Cluster.svg" width="100%" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="imgs/impluster_motif.svg" width="100%" /&gt;
+
+]
+
+]
+
+.column[
+
+
+
+&lt;img src="imgs/RFclusters.png" width="30%" /&gt;
+
+]
+
+---
+class: split-40-reverse
+## __DeepG4__: SNP effect on active G4s
+
+
+&lt;img src="imgs/SNP1.png" width="90%" /&gt;
+
+.column[
+* C&gt;A lead to a decrease in G4 activity.
+* A&gt;G lead to an increase in G4 activity.
+
+__SNPs could alter the G4 structure stability.__
+
+.large[SNPs eQTL (GTEx) increasing gene expression presented high G4 activity.]
+
+]
+
+.column[
+
+
+
+&lt;img src="imgs/SNP2.png" width="30%" /&gt;
+
+]
+
+---
+class: inverse, center, middle
+
+### .right[.Large[__T__hanks !]]
+
+&lt;hr /&gt;
+
+.large[Vincent ROCHER, Matthieu Genais, Elissar Nassereddine and Raphaël Mourad]
+
+.large[CBI-Toulouse | Chromatin and DNA Repair | 22/11/2020]
+
+---
+.center[
+&lt;img src="imgs/Motif_extraction.png" width="80%" /&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "googlecode",
+"highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

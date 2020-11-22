@@ -33,6 +33,7 @@ background-size: 45%,15%,20%,10%
 
 .large[CBI-Toulouse | Chromatin and DNA Repair | 22/11/2020]
 
+
 ---
 
 ## __DNA__: The secret of life 
@@ -45,7 +46,6 @@ background-size: 45%,15%,20%,10%
 
 &gt; The B- DNA (double helix structure) is the most stable structure.
 
-
 ]
 
 .pull-right[
@@ -55,7 +55,6 @@ background-size: 45%,15%,20%,10%
 &lt;img src="imgs/nonBDNA.png" width="90%" /&gt;
 
 ]
-
 
 ---
 
@@ -79,8 +78,9 @@ background-size: 45%,15%,20%,10%
 .large[
 * Regulation of __gene expression__ and __chromatin architecture__.
 * __Telomere stability__.
-* Disrupting the replication fork progression causing __DSBs__.
+* Disrupting the replication fork progression causing __Double-strand breaks (DSBs)__.
 ]
+
 ---
 ## Algorithms for G-quadruplexes (G4) predictions
 ### Expert system methods
@@ -144,12 +144,16 @@ background-size: 45%,15%,20%,10%
 * __Regex: __ `([Gg]{3,})  (\w{1,8})  ([Gg]{3,}) (\w{1,8}) ([Gg]{3,}) (\w{1,8}) ([Gg]{3,})`
 * __Score based:__ Compute a score using a sliding windows over the whole genome by using __G richness__ and __G skewness__ (G4Hunter).
 
+
+
 ---
 class: split-40
 
 ### First G4 genome-wide mapping _in vitro_ (G4-seq) 2014 
 
 .column[
+
+.large[[High-throughput sequencing of DNA G-quadruplex structures in the human genome](https://www.nature.com/articles/nbt.3295)]
 
 * High-resolution sequencing–based method to detect G4s in the human genome in vitro.
 
@@ -162,6 +166,9 @@ class: split-40
 &lt;img src="imgs/G4-seq.png" width="60%" /&gt;
 
 ]
+
+
+
 
 ---
 ## Algorithms for G-quadruplexes (G4) predictions
@@ -205,6 +212,8 @@ class: split-40
 * __Quadron:__ A machine learning model to predict the formation of G4s using 119  sequence-based features. I.e: the number of tetrads in the G4s , the occurrence of special kmer … 
 * __Penguinn, G4detector:__ Multiple layers CNN (Deep learning)
 
+
+
 ---
 class: split-80
 
@@ -221,9 +230,17 @@ class: split-80
 ]
 .column[
 
+[Genome-wide mapping of endogenous G-quadruplex DNA structures by chromatin immunoprecipitation and high-throughput sequencing](https://www.nature.com/articles/nprot.2017.150)
+
+
+
+
 &lt;img src="imgs/BG4seq.png" width="70%" /&gt;
 
+
+
 ]
+
 
 ---
 
@@ -240,6 +257,8 @@ class: split-80
 &lt;img src="imgs/mergepeaks.png" width="50%" /&gt;
 
 ]
+
+
 
 ---
 
@@ -261,6 +280,7 @@ class: split-80
 &lt;img src="imgs/deeplearning_img1.png" width="100%" /&gt;
 
 ]
+
 ---
 ## G4 predictions with __DeepG4__
 
@@ -296,6 +316,10 @@ class: split-80
 4. __Dropout__: Regularization layer.
 5. __Dense layer__ `(100 units,linear)`: Combination of weighted kernel signal.
 6. __Dense layer__ `(1 unit, sigmoid)`: Output a probability.
+
+
+
+
 
 ---
 class: split-40
@@ -404,17 +428,24 @@ and repeat contents similar to actives G4s (R package gkmSVM).
 
 ]
 
+
+
+
 ---
 
 ## __DeepG4__: Performances
 
 &lt;img src="imgs/Fig3_DeepG4_prediction_validation_before.svg" width="100%" /&gt;
 
+
+
 ---
 
 ## __DeepG4__: Performances
 
 &lt;img src="imgs/Fig3_DeepG4_prediction_validation_after.svg" width="100%" /&gt;
+
+
 
 ---
 
@@ -429,6 +460,10 @@ and repeat contents similar to actives G4s (R package gkmSVM).
 
 #### Multidimensional scaling (MDS) of DeepG4 clusters.
 ]
+
+
+
+
 ---
 class: split-40-reverse
 ## __DeepG4__: Feature importance
@@ -462,6 +497,9 @@ class: split-40-reverse
 
 ]
 
+
+
+
 ---
 ### Cell type specific transcription factor motif predictors of active G4s
 
@@ -474,6 +512,10 @@ __Random Forest classifier:__
 * One cell type vs all others cells types.
 * Use TFBS motifs as features.
 * Importance weighted by motif abundance in the positive set.
+
+
+
+
 ---
 class: split-40-reverse
 ## __DeepG4__: SNP effect on active G4s
@@ -499,6 +541,9 @@ __SNPs could alter the G4 structure stability.__
 
 ]
 
+
+
+
 ---
 class: inverse, center, middle
 
@@ -511,6 +556,19 @@ class: inverse, center, middle
 .large[CBI-Toulouse | Chromatin and DNA Repair | 22/11/2020]
 
 ---
+
+## Possible upgrades
+
+.Large[
+
+* Quasi-SVM as last layer (replacing Dense).
+* Filled weights with JASPAR PWMs to help training.
+* Parallel convolution layer with differents kernels sizes.
+* Add DNA accessibility as input with ATAC-seq.
+
+]
+---
+
 ## Sequence features enriched at active G4s
 .pull-left[
 

@@ -31,12 +31,12 @@ background-size: 45%,15%,20%,10%
 
 ## .center[.large[Deep__G4:__] A deep learning approach to predict active G-quadruplexes]
 
-### .center[SeqBim 2020]
+### .center[Séminaire __MIAT__]
 <hr />
 
 .large[Vincent ROCHER, Matthieu Genais, Elissar Nassereddine and Raphaël Mourad]
 
-.large[CBI-Toulouse | Chromatin and DNA Repair | 23/11/2020]
+.large[CBI-Toulouse | Chromatin and DNA Repair | 19/03/2021]
 
 
 
@@ -324,7 +324,7 @@ knitr::include_graphics("imgs/kernel464_pwm_epoch0to20.svg")
 ## __DeepG4__ model architecture
 
 ```{r out.width = '100%',echo=F}
-knitr::include_graphics("imgs/CNN_model_improved.svg")
+knitr::include_graphics("imgs/CNN-model-improved.svg")
 ```
 
 1. __Conv1D__: Scan sequences using kernel (20bp).
@@ -351,7 +351,8 @@ and repeat contents similar to actives G4s (R package gkmSVM).
 
 * __HaCat G4:__ train/validation/test dataset.
 * __Independent experiment:__ HaCat, HEKnp, K562.
-
+* __G4P experiments:__ HeLaS3, 293T, A549, H1975 _(Ke-wei Zheng et al, NAR 2020)_.
+* __qG4 experiment:__ Breast cancer. 
 
 ]
 .column[
@@ -468,6 +469,29 @@ __Random Forest classifier:__
 * Use TFBS motifs as features.
 * Importance weighted by motif abundance in the positive set.
 
+---
+## __DeepG4__ model architecture with accessibility 
+
+```{r out.width = '100%',echo=F}
+knitr::include_graphics("imgs/CNN-model-improved-ATAC.svg")
+```
+
+<!-- 1. __Conv1D__: Scan sequences using kernel (20bp). -->
+<!-- 2. __Average pooling__: Reduce dimension size and aggregate kernel signal. -->
+<!-- 3. __Global max pooling__: Output max activation signal for each kernel. -->
+<!-- 4. __Concatenate__: Concatenation of accessibility layer and __Global max pooling__ layer. -->
+<!-- 5. __Dropout__: Regularization layer. -->
+<!-- 6. __Dense layer__ `(100 units,linear)`: Combination of weighted kernel signal. -->
+<!-- 7. __Dense layer__ `(1 unit, sigmoid)`: Output a probability. -->
+
+---
+
+## __DeepG4__: Performances with accessibility
+
+```{r out.width = '100%',echo=F}
+knitr::include_graphics("imgs/Fig3_DeepG4_prediction_validation_ATAC.svg")
+```
+
 
 
 ---
@@ -509,7 +533,7 @@ class: inverse, center, middle
 
 .large[Vincent ROCHER, Matthieu Genais, Elissar Nassereddine and Raphaël Mourad]
 
-.large[CBI-Toulouse | Chromatin and DNA Repair | 23/11/2020]
+.large[CBI-Toulouse | Chromatin and DNA Repair | 19/03/2021]
 
 ---
 
@@ -552,22 +576,4 @@ knitr::include_graphics("imgs/average_prof_AME.png")
 knitr::include_graphics("imgs/Motif_extraction.png")
 ```
 ]
----
-## __AUC__
 
-```{r,echo=F,warning=F,message=F}
-library(formattable)
-fres <- read_tsv("recap_AUC_1.tsv") %>% 
-  gather(key = Input,value=AUC,-Tool) 
-fres <- fres %>% 
-  mutate(AUC = color_bar("lightgreen")(fres$AUC)) %>% 
-  spread(key = Tool,value = AUC) %>% 
-  mutate(Input = str_remove(Input,"_Ctrl_gkmSVM|_Ctrl"))
-fres %>% 
-  kable(escape=F) %>%
-  kable_paper("hover", full_width = F) %>% 
-  column_spec(1:ncol(fres), width = "3cm") %>%
-  scroll_box(height = "500px")
-#xaringan::decktape("index.html","index.pdf")
-#pagedown::chrome_print("index.html")
-```

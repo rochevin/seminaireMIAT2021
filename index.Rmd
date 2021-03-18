@@ -470,6 +470,18 @@ __Random Forest classifier:__
 * Importance weighted by motif abundance in the positive set.
 
 ---
+### BG4-G4seq peaks co-localise with accessibility
+
+* Strong correlation between __accessibility__ and __G4__ signal.
+* Accessibility (using ATAC-seq or DNAse-seq) can be used as a good predictor.
+
+```{r out.width = '100%',echo=F}
+knitr::include_graphics("imgs/igv_panel2.png")
+```
+
+#### DNA associated with accessibility can help to improve prediction on other cell-lines 
+
+---
 ## __DeepG4__ model architecture with accessibility 
 
 ```{r out.width = '100%',echo=F}
